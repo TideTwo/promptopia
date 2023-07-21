@@ -99,7 +99,7 @@ const Nav = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    toggleDropdown(false);
+                    setToggleDropdown(false);
                     signOut();
                   }}
                   className="mt-5 w-full black_btn"
