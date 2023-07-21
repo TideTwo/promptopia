@@ -7,7 +7,6 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
   const { data: session } = useSession();
-
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
@@ -19,14 +18,12 @@ const Nav = () => {
 
     setUpProviders();
   }, []);
-
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href={"/"} className="flex gap-2 flex-center">
         <Image src="/assets/images/logo.svg" alt="Logo" width={30} height={30} className="object-contain" />
         <p className="logo_text">Promptopia</p>
       </Link>
-
       {/* Desktop Nav */}
       <div className="sm:flex hidden">
         {session?.user ? (
@@ -44,20 +41,18 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
-              Object.values(
-                providers.map((provider) => {
-                  <button
-                    type="button"
-                    key={provider.name}
-                    onClick={() => {
-                      return signIn(provider.id);
-                    }}
-                    className="black_btn"
-                  >
-                    Sign In
-                  </button>;
-                })
-              )}
+              Object.values(providers).map((provider) => {
+                <button
+                  type="button"
+                  key={provider.name}
+                  onClick={() => {
+                    return signIn(provider.id);
+                  }}
+                  className="black_btn"
+                >
+                  Sign In
+                </button>;
+              })}
           </>
         )}
       </div>
@@ -114,20 +109,18 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
-              Object.values(
-                providers.map((provider) => {
-                  <button
-                    type="button"
-                    key={provider.name}
-                    onClick={() => {
-                      return signIn(provider.id);
-                    }}
-                    className="black_btn"
-                  >
-                    Sign In
-                  </button>;
-                })
-              )}
+              Object.values(providers).map((provider) => {
+                <button
+                  type="button"
+                  key={provider.name}
+                  onClick={() => {
+                    return signIn(provider.id);
+                  }}
+                  className="black_btn"
+                >
+                  Sign In
+                </button>;
+              })}
           </>
         )}
       </div>
