@@ -1,7 +1,7 @@
 import User from "@models/user";
 import { connectToDb } from "@utils/database";
 const { default: NextAuth } = require("next-auth/next");
-const { GoogleProvider } = require("next-auth/providers/google");
+import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
   providers: [
