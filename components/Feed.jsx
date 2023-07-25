@@ -2,12 +2,28 @@
 
 import React, { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
+import { useRouter } from "next/navigation";
 
 const PromptCardList = ({ data, handleTagClick }) => {
+  const router = useRouter();
+
+  const handleNameClick = (userId) => {
+    router.push("/profile/" + userId);
+  };
+
   return (
     <div className="mt-16 prompt_layout">
       {data.map((post) => {
-        return <PromptCard key={post._id} post={post} handleTagClick={handleTagClick} />;
+        return (
+          <PromptCard
+            key={post._id}
+            post={post}
+            handleTagClick={handleTagClick}
+            handleNameClick={() => {
+              handleNameClick(post.creator._id);
+            }}
+          />
+        );
       })}
     </div>
   );

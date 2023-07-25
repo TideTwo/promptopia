@@ -28,16 +28,18 @@ const Profile = () => {
 
   const handleDelete = async (post) => {
     const hasConfirmed = confirm("Delete prompt?");
-    try {
-      await fetch("api/prompt/" + post._id.toString(), { method: "DELETE" });
+    if (hasConfirmed) {
+      try {
+        await fetch("api/prompt/" + post._id.toString(), { method: "DELETE" });
 
-      const filteredPosts = posts.filter((p) => {
-        return post._id !== p._id;
-      });
+        const filteredPosts = posts.filter((p) => {
+          return post._id !== p._id;
+        });
 
-      setPosts(filteredPosts);
-    } catch (error) {
-      console.log(error);
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
